@@ -1,27 +1,37 @@
-# 🚀 GitOps CI/CD Pipeline: Visitor Counter App
+🚀 GitOps CI/CD Pipeline: Visitor Counter App
 
 A complete, production-grade GitOps pipeline demonstrating the deployment of a Stateful application (Flask + Redis) onto a Kubernetes cluster using GitHub Actions and ArgoCD.
 
-## 🏗️ Architecture Overview
+📸 Screenshots
+
+🏗️ Architecture Overview
 
 This project implements a pure GitOps workflow:
-1. **Developer** pushes code to the GitHub repository.
-2. **GitHub Actions (CI)** triggers, builds a Docker image, and pushes it to Docker Hub.
-3. **GitHub Actions** automatically updates the image tag in the Kubernetes deployment manifest (`app-deployment.yaml`) and commits the change back to the repo.
-4. **ArgoCD (CD)** continuously monitors the `k8s/` directory in the repository. It detects the change and automatically synchronizes the Kubernetes cluster with the desired state.
 
-## 🛠️ Tech Stack
+Developer pushes code to the GitHub repository.
 
-* **Application:** Python, Flask
-* **Database:** Redis (In-memory datastore)
-* **Containerization:** Docker
-* **Container Orchestration:** Kubernetes (Minikube)
-* **Continuous Integration (CI):** GitHub Actions
-* **Continuous Deployment (CD):** ArgoCD
+GitHub Actions (CI) triggers, builds a Docker image, and pushes it to Docker Hub.
 
-## 📁 Folder Structure
+GitHub Actions automatically updates the image tag in the Kubernetes deployment manifest (app-deployment.yaml) and commits the change back to the repo.
 
-```text
+ArgoCD (CD) continuously monitors the k8s/ directory in the repository. It detects the change and automatically synchronizes the Kubernetes cluster with the desired state.
+
+🛠️ Tech Stack
+
+Application: Python, Flask
+
+Database: Redis (In-memory datastore)
+
+Containerization: Docker
+
+Container Orchestration: Kubernetes (Minikube)
+
+Continuous Integration (CI): GitHub Actions
+
+Continuous Deployment (CD): ArgoCD
+
+📁 Folder Structure
+
 gitops-portfolio-project/
 │
 ├── .github/workflows/
@@ -38,7 +48,55 @@ gitops-portfolio-project/
     └── app-service.yaml      # Flask App NodePort Service
 
 
- screenShoots
- <img width="1529" height="777" alt="image" src="https://github.com/user-attachments/assets/c91688d8-018c-480e-9d9e-355e80e4acc5" />
-<img width="1534" height="776" alt="image" src="https://github.com/user-attachments/assets/e12aa559-856b-428a-b778-5647a3760225" />
+✨ Key Features Implemented
 
+Separation of Concerns: Application code and Kubernetes manifests are cleanly separated.
+
+Stateful Deployment: Uses Redis to maintain state (visitor count) across pod restarts.
+
+Zero-Downtime Updates: ArgoCD ensures smooth rolling updates without manual intervention.
+
+Health Probes: Liveness and Readiness probes configured in Kubernetes for high availability.
+
+Security: Non-root user implementation inside the Dockerfile.
+
+🚀 How to Run Locally
+
+1. Prerequisites
+
+Docker Desktop
+
+Minikube & kubectl
+
+GitHub Account & Docker Hub Account
+
+2. Infrastructure Setup
+
+Start the local Kubernetes cluster and install ArgoCD:
+
+minikube start
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+
+3. Deploy via ArgoCD
+
+Port-forward the ArgoCD UI:
+
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+
+Log into ArgoCD UI (https://localhost:8080).
+
+Create a New App pointing to this GitHub repository's k8s folder.
+
+Click Sync to deploy the application and database.
+
+4. Access the Application
+
+Once the deployment is healthy in ArgoCD, access the app:
+
+minikube service gitops-service
+
+
+Developed by a passionate DevOps Engineer - Showcasing Modern DevOps Practices.
