@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: YOUR_DOCKERHUB_USERNAME/gitops-app:latest
+        image: dilip001/gitops-app:f9c0c35427709b307e1618acfacb0413df718e24
         ports:
         - containerPort: 5000
         
