@@ -2,7 +2,7 @@
 
 A production-style **GitOps and monitoring pipeline** that deploys a stateful application (**Flask + Redis**) to a **K3s Kubernetes cluster on AWS EC2**. Delivery is automated with **GitHub Actions** and **ArgoCD**, and the cluster is monitored with **Prometheus** and **Grafana**, with **Gmail SMTP** alerts for high CPU.
 
-![Architecture Diagram](screenshots/architecture.png)
+![Architecture Diagram](screenshots/architecture.svg)
 
 ---
 
