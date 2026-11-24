@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: dilip001/gitops-app:f9c0c35427709b307e1618acfacb0413df718e24
+        image: dilip001/gitops-app:4a5e98d45ca23d295ac22ccec49c21440d3cb8e3
         ports:
         - containerPort: 5000
         
