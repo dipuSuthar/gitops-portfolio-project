@@ -91,8 +91,7 @@ gitops-portfolio-project/
 │   └── app-service.yaml         # Flask NodePort Service
 ├── argocd/
 │   └── application.yaml         # ArgoCD Application definition
-├── monitoring/
-│   └── grafana-smtp.yaml        # Helm values: NodePort and SMTP (sanitized)
+├
 └── screenshots/                 # Architecture and dashboard screenshots
 ```
 
